@@ -1,5 +1,5 @@
 import Chart from "react-apexcharts";
-import { _options } from "./chartOptions";
+import { chartOptions } from "./chartOptions";
 
 interface Props {
     increase: boolean | undefined,
@@ -17,6 +17,7 @@ interface data {
 }
 
 export const CardChart = (props: Props) => {
+    const _options = chartOptions(props.increase!)
 
     return (
         <div id="chart" className="flex h-full w-full z-10">
@@ -24,6 +25,7 @@ export const CardChart = (props: Props) => {
                 options={_options}
                 series={props.series}
                 type="area"
+                height={200}
             />
         </div>
     );

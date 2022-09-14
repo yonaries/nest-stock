@@ -1,12 +1,13 @@
-import React from 'react'
+import { fetchIntraDay } from '../../api/interadayRequest'
 import { useTheme } from '../../context/ThemeContext'
-import { CardChart } from '../components/cardChart'
 import NavBar from '../components/navbar'
+import Popular from '../components/popular'
 import SideBar from '../components/sidebar'
 import ShortTable from '../components/smallTable'
-import StatChart from '../components/statChart'
 import Heading_Buttons from '../components/top'
 import Trending from '../components/trending'
+
+
 
 
 type Props = {}
@@ -21,13 +22,13 @@ const Dashboard = (props: Props) => {
                 <NavBar />
                 <Heading_Buttons />
                 <div className='flex w-full mx-8'>
-                    <div className='block w-4/6'>
+                    <div className='block md:w-4/6 space-y-5'>
                         <Trending />
-                        <StatChart />
+                        <Popular />
                     </div>
                     <div className='space-y-5'>
-                        <ShortTable />
-                        <ShortTable />
+                        <ShortTable stocks={'gainers'} />
+                        <ShortTable stocks={'losers'} />
                     </div>
                 </div>
             </div>

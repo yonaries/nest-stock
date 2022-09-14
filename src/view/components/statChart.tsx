@@ -1,16 +1,10 @@
 import React from 'react'
-import { useTheme } from '../../context/ThemeContext'
 
-type Props = {}
+export const StatChart = () => {
 
-const StatChart = (props: Props) => {
-    const { textPrimary, bgPrimary, bgSecondary, textSecondary } = useTheme()
+  return (
+    <div className={`hidden md:block my-2 h-2/3 rounded-md`}>
 
-    return (
-        <div className={`hidden md:block my-2 h-2/3 w-full ${bgPrimary} rounded-md`}>
-
-        </div>
-    )
+    </div>
+  );
 }
-
-export default StatChart

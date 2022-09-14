@@ -6,7 +6,6 @@ import { FiHelpCircle, FiSettings } from "react-icons/fi";
 import { RiFolderChartLine, } from "react-icons/ri";
 import { AiOutlineStock, AiOutlineInfoCircle } from "react-icons/ai";
 import { MdOutlineDarkMode, MdOutlineDashboard } from "react-icons/md";
-import logo from '../../assets/StockNest.svg'
 import '../css/toggle.css'
 
 
@@ -31,13 +30,13 @@ const SideBarButton = (props: Props) => {
 }
 
 const SideBar = () => {
-    const { bgPrimary, darkTheme, changeTheme } = useTheme();
+    const { bgPrimary, darkTheme, changeTheme, logo } = useTheme();
     const [selected, setSelected] = useState();
 
     return (
         <>
             <div className={`px-4 pt-5 top-0 left-0 ${bgPrimary} h-screen hidden md:block w-56 text-sm text-slate-400 `}>
-                <img src={logo} />
+                <img src={logo} className='w-28' />
                 <div className='h-54 py-3 mt-5'>
                     <p>General</p>
                     <SideBarButton icon={<MdOutlineDashboard />} title={"Overview"} />
@@ -61,8 +60,8 @@ const SideBar = () => {
                         </IconContext.Provider>
                         <p className=' text-slate-500 '>Dark Mode</p>
                         <label className="switch ml-3">
-                            <input checked={darkTheme} type="checkbox" />
-                            <span className="slider round" onClick={() => changeTheme(!darkTheme)}></span>
+                            <input checked={darkTheme} type="checkbox" onChange={() => changeTheme(!darkTheme)} />
+                            <span className="slider round"></span>
                         </label>
                     </div>
                 </div>

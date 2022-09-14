@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-
+import logoDark from '../assets/StockNestWhite.svg'
+import logoLight from '../assets/StockNest.svg'
 
 interface ThemeType {
     darkTheme: boolean,
@@ -7,6 +8,8 @@ interface ThemeType {
     bgSecondary: string,
     textPrimary: string,
     textSecondary: string,
+    sideBarBg: string,
+    logo: string,
     changeTheme: Function,
 }
 const initialState = {
@@ -15,6 +18,8 @@ const initialState = {
     bgSecondary: '',
     textPrimary: '',
     textSecondary: '',
+    sideBarBg: '',
+    logo: '',
     changeTheme: () => { }
 }
 
@@ -26,10 +31,12 @@ export const useTheme = () => {
 
 const ThemeProvider = ({ children }: any) => {
     const [darkTheme, setDarkTheme] = useState<boolean>(false);
-    const [bgPrimary, setBgPrimary] = useState('')
-    const [bgSecondary, setBgSecondary] = useState('')
-    const [textPrimary, setTextPrimary] = useState('')
-    const [textSecondary, setTextSecondary] = useState('')
+    const [bgPrimary, setBgPrimary] = useState<string>('')
+    const [bgSecondary, setBgSecondary] = useState<string>('')
+    const [textPrimary, setTextPrimary] = useState<string>('')
+    const [textSecondary, setTextSecondary] = useState<string>('')
+    const [sideBarBg, setSideBarBg] = useState<string>('');
+    const [logo, setLogo] = useState<string>('');
 
     const changeTheme = (isOn: boolean) => {
         setDarkTheme(isOn)
@@ -46,6 +53,8 @@ const ThemeProvider = ({ children }: any) => {
                 setBgSecondary('bg-dark-secondary')
                 setTextPrimary('text-white')
                 setTextSecondary('text-slate-200')
+                setSideBarBg('bg-dark-primary')
+                setLogo(logoDark)
             }
             else {
                 setDarkTheme(false)
@@ -53,6 +62,8 @@ const ThemeProvider = ({ children }: any) => {
                 setBgSecondary('bg-slate-200')
                 setTextPrimary('text-dark')
                 setTextSecondary('text-slate-500')
+                setSideBarBg('bg-black')
+                setLogo(logoLight)
             }
         }
         checkTheme();
@@ -66,6 +77,8 @@ const ThemeProvider = ({ children }: any) => {
         bgSecondary: bgSecondary,
         textPrimary: textPrimary,
         textSecondary: textSecondary,
+        sideBarBg: sideBarBg,
+        logo: logo
     }
 
     return (
